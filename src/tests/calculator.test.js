@@ -66,6 +66,35 @@ describe('Calculator basic operations', () => {
     expect(() => calc('sqrt', -9)).toThrow(/Square root of negative/i);
   });
 
+  // Additional requested tests
+  test('Large exponent: 2^50', () => {
+    expect(calc('pow', 2, 50)).toBe(Math.pow(2, 50));
+  });
+
+  test('Floating-point multiplication: 5.5 * 2 -> 11', () => {
+    expect(calc('*', 5.5, 2)).toBeCloseTo(11);
+  });
+
+  test('Floating-point modulo: 5.5 % 2 -> 1.5', () => {
+    expect(calc('mod', 5.5, 2)).toBeCloseTo(1.5);
+  });
+
+  test('Floating-point sqrt: sqrt 2', () => {
+    expect(calc('sqrt', 2)).toBeCloseTo(Math.sqrt(2));
+  });
+
+  test('Negative base power: (-2)^3 -> -8', () => {
+    expect(calc('pow', -2, 3)).toBe(-8);
+  });
+
+  test('Negative base power even exponent: (-2)^2 -> 4', () => {
+    expect(calc('pow', -2, 2)).toBe(4);
+  });
+
+  test('Negative operands addition: -5 + -3 -> -8', () => {
+    expect(calc('add', -5, -3)).toBe(-8);
+  });
+
   test('Unsupported operation throws', () => {
     expect(() => calc('foobar', 2, 3)).toThrow(/Unsupported operation/i);
   });
