@@ -38,6 +38,6 @@ describe('Calculator basic operations', () => {
   });
 
   test('Unsupported operation throws', () => {
-    expect(() => calc('pow', 2, 3)).toThrow(/Unsupported operation/i);
+    expect(() => calc('foobar', 2, 3)).toThrow(/Unsupported operation/i);
   });
 });
