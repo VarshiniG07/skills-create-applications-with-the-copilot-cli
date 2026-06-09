@@ -37,6 +37,35 @@ describe('Calculator basic operations', () => {
     expect(() => calc('div', 1, 0)).toThrow(/Division by zero/i);
   });
 
+  // New operations
+  test('5 % 2 (mod) -> 1', () => {
+    expect(calc('mod', 5, 2)).toBe(1);
+  });
+
+  test('5 % 2 (%) -> 1', () => {
+    expect(calc('%', 5, 2)).toBe(1);
+  });
+
+  test('2 ^ 3 (pow) -> 8', () => {
+    expect(calc('pow', 2, 3)).toBe(8);
+  });
+
+  test('2 ^ 3 (^) -> 8', () => {
+    expect(calc('^', 2, 3)).toBe(8);
+  });
+
+  test('sqrt 16 -> 4', () => {
+    expect(calc('sqrt', 16)).toBe(4);
+  });
+
+  test('Modulo by zero throws', () => {
+    expect(() => calc('mod', 5, 0)).toThrow(/Modulo by zero/i);
+  });
+
+  test('Square root of negative number throws', () => {
+    expect(() => calc('sqrt', -9)).toThrow(/Square root of negative/i);
+  });
+
   test('Unsupported operation throws', () => {
     expect(() => calc('foobar', 2, 3)).toThrow(/Unsupported operation/i);
   });
